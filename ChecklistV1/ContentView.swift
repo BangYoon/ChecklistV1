@@ -8,25 +8,34 @@
 
 import SwiftUI
 
+struct ChecklistItem: Identifiable {
+    let id = UUID()
+    var name: String
+    var isChecked: Bool = false
+}
+
 struct ContentView: View {
-    @State var checklistItems = ["Walk the dog", "Brush my teeth", "Learn iOS development", "Soccer practice", "Eat ice cream"]
+    @State var checklistItems = [
+        ChecklistItem(name: "Walk the dog", isChecked: false),
+        ChecklistItem(name: "Brush my teeth", isChecked: false),
+        ChecklistItem(name: "Walk the dog", isChecked: true),
+        ChecklistItem(name: "Soccer practice", isChecked: false),
+        ChecklistItem(name: "Walk the dog", isChecked: true)
+    ]
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(checklistItems, id: \.self) {
-                    item in Text(item)
-                        //.onTapGesture {
-                        //    let indexesToRemove = IndexSet(integersIn: 0...4)
-                        //        print("indexesToRemove", indexesToRemove)
-                        //    self.checklistItems.remove(atOffsets: indexesToRemove)
-                        //    //self.checklistItems.remove(at: 0)
-                        //    //self.checklistItems.append(item)
-                        //    self.printChecklistContents()
-                        //}
+                ForEach(checklistItems) {
+                    checklistItem in HStack {
+                        Text(checklistItem.name)
+                        Spacer()
+                        Text(checklistItem.isChecked ? "☑️" : "⬛️")
+                    }
                 }  //End of ForEach
                 .onDelete(perform: deleteListItem)
                 .onMove(perform: moveListItem)
+                .onTapGesture { print("The user tapped a list item!") }
             }  //End of List
             .navigationBarItems(trailing: EditButton())
             .navigationBarTitle("Ckecklist")

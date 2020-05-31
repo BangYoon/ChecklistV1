@@ -31,11 +31,18 @@ struct ContentView: View {
                         Text(checklistItem.name)
                         Spacer()
                         Text(checklistItem.isChecked ? "☑️" : "⬛️")
+                    }  //End of HStack
+                        .background(Color.white)  //for whole row clickable (dead zone)
+                    .onTapGesture {
+                        //print("The user tapped a list itme! \(checklistItem.name)")
+                        if let matchingIndex = self.checklistItems.firstIndex(where: {
+                            $0.id == checklistItem.id
+                        }){ self.checklistItems[matchingIndex].isChecked.toggle() }
+                        self.printChecklistContents()
                     }
                 }  //End of ForEach
                 .onDelete(perform: deleteListItem)
                 .onMove(perform: moveListItem)
-                .onTapGesture { print("The user tapped a list item!") }
             }  //End of List
             .navigationBarItems(trailing: EditButton())
             .navigationBarTitle("Ckecklist")

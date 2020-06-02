@@ -20,7 +20,7 @@ struct ChecklistView: View {
                         Spacer()
                         Text(checklistItem.isChecked ? "☑️" : "⬛️")
                     }  //End of HStack
-                        .background(Color.white)  //for whole row clickable (dead zone)
+                    .background(Color.white)  //for whole row clickable (dead zone)
                     .onTapGesture {
                         //print("The user tapped a list itme! \(checklistItem.name)")
                         if let matchingIndex = self.checklist.items.firstIndex(where: {
@@ -37,7 +37,7 @@ struct ChecklistView: View {
             .onAppear() { self.checklist.printChecklistContents() }
         }  //End of Navigation View
     }  //End of body
-}  //End of ContentView
+}  //End of ChecklistView
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

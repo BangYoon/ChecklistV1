@@ -46,6 +46,18 @@ struct ChecklistView: View {
         .onDisappear() {
             print("ChecklistView has disappeared!")
         }
+        .onReceive (NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) {
+            _ in print("willResignActiveNotification")
+        }
+        .onReceive (NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) {
+            _ in print("didEnterBackgroundNotification")
+        }
+        .onReceive (NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) {
+            _ in print("willEnterForegroundNotification")
+        }
+        .onReceive (NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) {
+            _ in print("didBecomeActiveNotification")
+        }
     }  //End of body
 }  //End of ChecklistView
 

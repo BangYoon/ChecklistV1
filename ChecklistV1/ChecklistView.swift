@@ -31,12 +31,20 @@ struct ChecklistView: View {
                     }
                 },
                 trailing: EditButton())
-                .navigationBarTitle("Ckecklist", displayMode: .inline)
-            .onAppear() { self.checklist.printChecklistContents() }
+            .navigationBarTitle("Ckecklist", displayMode: .inline)
+            //.onAppear() {
+            //    self.checklist.printChecklistContents()
+            //}
         }  //End of Navigation View
-            .sheet(isPresented: $newChecklistItemViewIsVisible ) {
-                //Text("New item screen coming soon!")
-                NewChecklistItemView(checklist: self.checklist)
+        .sheet(isPresented: $newChecklistItemViewIsVisible ) {
+            //Text("New item screen coming soon!")
+            NewChecklistItemView(checklist: self.checklist)
+        }
+        .onAppear() {
+            print("ChecklistView has appeared!")
+        }
+        .onDisappear() {
+            print("ChecklistView has disappeared!")
         }
     }  //End of body
 }  //End of ChecklistView

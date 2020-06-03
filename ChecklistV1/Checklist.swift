@@ -13,13 +13,15 @@ class Checklist: ObservableObject {
         loadChecklistItems()
     }
     
+    /*
     @Published var items = [
         ChecklistItem(name: "Walk the dog", isChecked: false),
         ChecklistItem(name: "Brush my teeth", isChecked: false),
         ChecklistItem(name: "Walk the dog", isChecked: true),
         ChecklistItem(name: "Soccer practice", isChecked: false),
         ChecklistItem(name: "Walk the dog", isChecked: true)
-    ]
+    ]*/
+    @Published var items: [ChecklistItem] = []
     
     //Method
     func printChecklistContents() {

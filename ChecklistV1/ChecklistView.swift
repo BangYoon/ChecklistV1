@@ -44,6 +44,10 @@ struct ChecklistView: View {
             .navigationBarTitle("Ckecklist")
             .onAppear() { self.checklist.printChecklistContents() }
         }  //End of Navigation View
+            .sheet(isPresented: $newChecklistItemViewIsVisible ) {
+                //Text("New item screen coming soon!")
+                NewChecklistItemView()
+        }
     }  //End of body
 }  //End of ChecklistView
 

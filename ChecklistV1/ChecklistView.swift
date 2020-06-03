@@ -48,6 +48,7 @@ struct ChecklistView: View {
         }
         .onReceive (NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) {
             _ in print("willResignActiveNotification")
+            self.checklist.saveChecklistItems()
         }
         .onReceive (NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) {
             _ in print("didEnterBackgroundNotification")
